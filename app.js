@@ -9,7 +9,7 @@ const app = express();
 const userRouter = require('./routes/user.routes');
 const publicRouter = require('./routes/public.routes');
 
-app.use('/user', userRouter)
+app.use('/user', userRouter);
 app.use('/', publicRouter);
 
 dotenv.config();
