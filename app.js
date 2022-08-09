@@ -9,9 +9,18 @@ const app = express();
 const userRouter = require('./routes/user.routes');
 const publicRouter = require('./routes/public.routes');
 
+
+//This is for the Router
 app.use('/user', userRouter);
 app.use('/', publicRouter);
 
+//This is to use the body requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+//DB connection
 dotenv.config();
 connectDB();
 
