@@ -30,3 +30,15 @@ exports.createUser = async(req, res) => {
         }
     })
 }
+exports.getUsers = async(req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).json({
+                success: true,
+                data: users
+            })
+        }
+    })
+}
