@@ -9,7 +9,7 @@ const app = express();
 
 const userRouter = require('./routes/user.routes');
 const publicRouter = require('./routes/public.routes');
-
+const jobRouter = require('./routes/job.routes');
 
 
 
@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({
 //This is for the Router
 app.use('/user', userRouter);
 app.use('/', publicRouter);
+app.use('/job', jobRouter);
 
 app.use(cors());
 //DB connection
