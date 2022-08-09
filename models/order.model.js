@@ -9,7 +9,17 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    code: {
+        type: String,
+        required: true,
+        unique: true,
+        dropDups: true
+    },
     item: {
+        type: String,
+        required: true
+    },
+    location: {
         type: String,
         required: true
     },

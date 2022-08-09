@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const jobSchema = mongoose.Schema({
     jobNumber: {
-        type: String,
+        type: Number,
         required: true,
         unique: true,
         dropDups: true
