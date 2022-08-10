@@ -25,7 +25,9 @@ app.use('/', publicRouter);
 app.use('/job', jobRouter);
 app.use('/order', orderRouter);
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 //DB connection
 dotenv.config();
 connectDB();
