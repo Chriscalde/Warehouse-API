@@ -10,7 +10,7 @@ const app = express();
 const userRouter = require('./routes/user.routes');
 const publicRouter = require('./routes/public.routes');
 const jobRouter = require('./routes/job.routes');
-
+const orderRouter = require('./routes/order.routes');
 
 
 //This is to use the body requests
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({
 app.use('/user', userRouter);
 app.use('/', publicRouter);
 app.use('/job', jobRouter);
+app.use('/order', orderRouter);
 
 app.use(cors());
 //DB connection

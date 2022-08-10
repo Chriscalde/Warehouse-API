@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const orderSchema = mongoose.Schema({
     jobId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'job',
         required: true
     },
     type: {
@@ -21,16 +22,21 @@ const orderSchema = mongoose.Schema({
     },
     location: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,
         required: false
     },
-    status: {
-        type: String,
+    date: {
+        type: Date,
         required: true
+    },
+    status: {
+        type: Number,
+        required: true,
+        default: 0
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('order', orderSchema);
