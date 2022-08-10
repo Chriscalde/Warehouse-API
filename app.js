@@ -3,7 +3,11 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const cors_proxy = require('cors-anywhere')
+const expresHttpProxy = require('express-http-proxy');
 
+const HOST = process.env.HOST || '0.0.0.0'
+const CORS_PORT = process.env.PORT || 8081
 const PORT = process.env.PORT || 8080
 const app = express();
 
@@ -25,11 +29,23 @@ app.use('/', publicRouter);
 app.use('/job', jobRouter);
 app.use('/order', orderRouter);
 
-app.use(cors({
-    origin: '*'
-}));
+// app.use(cors());
 //DB connection
 dotenv.config();
 connectDB();
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on localhost port ${PORT}`))
+
+cors_proxy.createServer({
+    originWhitelist: [],
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(CORS_PORT, HOST, function() {
+    console.log('Running CORS Anywhere on ' + HOST + ':' + CORS_PORT)
+});
+
+app.use(expresHttpProxy(`localhost:${CORS_PORT}`))
+
+
+
+
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${HOST} port ${PORT}`))
