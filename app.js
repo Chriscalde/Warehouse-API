@@ -7,7 +7,7 @@ const cors_proxy = require('cors-anywhere')
 const expresHttpProxy = require('express-http-proxy');
 
 const HOST = process.env.HOST || '0.0.0.0'
-const CORS_PORT = process.env.CORS_PORT || 8081
+const CORS_PORT = 8081
 const PORT = process.env.PORT || 8080
 const app = express();
 
