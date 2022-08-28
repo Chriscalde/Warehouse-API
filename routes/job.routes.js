@@ -3,8 +3,9 @@ const router = express.Router();
 const controller = require('../controllers/job.controller');
 
 router.post('/create', controller.createJob);
-router.put('/update', controller.changeStatus);
+router.put('/update/:id', controller.changeStatus);
 router.get('/all', controller.getAll);
-router.get('/:id', controller.getJob);
+router.get('/get/:id', controller.getJob);
+router.get('/first', controller.getFirstJob);
 
 module.exports = router;

@@ -32,3 +32,18 @@ exports.createItem = async(req, res) => {
         }
     })
 }
+
+exports.getJobOrder = (req, res) => {
+    const jobId = req.body.jobId;
+
+    Order.find({ jobId: jobId }, (err, order) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).json({
+                succes: true,
+                data: order
+            })
+        }
+    })
+}

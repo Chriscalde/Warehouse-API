@@ -24,7 +24,7 @@ exports.createJob = async(req, res) => {
 }
 
 exports.changeStatus = async(req, res) => {
-    const jobId = req.body.jobId
+    const jobId = req.params.id
     const status = req.body.status
     Job.findByIdAndUpdate(jobId, { status: status }, (err, job) => {
         if (err) {
@@ -55,6 +55,19 @@ exports.getJob = (req, res) => {
     const jobId = req.params.id
 
     Job.findById(jobId, (err, job) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).json({
+                success: true,
+                data: job
+            })
+        }
+    })
+}
+
+exports.getFirstJob = (req, res) => {
+    Job.findOne({}, (err, job) => {
         if (err) {
             res.status(500).send(err);
         } else {
