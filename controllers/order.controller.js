@@ -32,16 +32,27 @@ exports.createItem = async(req, res) => {
         }
     })
 }
-
-exports.getJobOrder = (req, res) => {
-    const jobId = req.body.jobId;
-
-    Order.find({ jobId: jobId }, (err, order) => {
+exports.getAllOrders = (req, res) => {
+    Order.find({}, (err, orders) => {
         if (err) {
             res.status(500).send(err)
         } else {
             res.status(200).json({
-                succes: true,
+                success: true,
+                data: orders
+            })
+        }
+    })
+}
+exports.getJobOrder = (req, res) => {
+    const jobId = req.params.id;
+
+    Order.find({ jobId }, (err, order) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).json({
+                success: true,
                 data: order
             })
         }
