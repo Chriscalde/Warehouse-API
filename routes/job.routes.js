@@ -4,6 +4,7 @@ const controller = require('../controllers/job.controller');
 
 router.post('/create', controller.createJob);
 router.put('/update/:id', controller.changeStatus);
+router.put('/details/:id', controller.addJobDetails);
 router.get('/all', controller.getAll);
 router.get('/get/:id', controller.getJob);
 router.get('/first', controller.getFirstJob);

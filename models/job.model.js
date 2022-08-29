@@ -15,6 +15,10 @@ const jobSchema = mongoose.Schema({
         type: String,
         required: true,
         default: 'No Items'
+    },
+    jobDetails: {
+        type: Object,
+        required: false
     }
 });
 

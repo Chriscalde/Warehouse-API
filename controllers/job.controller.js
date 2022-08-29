@@ -37,7 +37,20 @@ exports.changeStatus = async(req, res) => {
         }
     })
 }
-
+exports.addJobDetails = async(req, res) => {
+    const jobId = req.params.id
+    const jobDetails = req.body.jobDetails
+    Job.findByIdAndUpdate(jobId, { jobDetails: jobDetails }, (err, job) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).json({
+                success: true,
+                data: job
+            })
+        }
+    })
+}
 exports.getAll = (req, res) => {
     Job.find({}, (err, jobs) => {
         if (err) {
