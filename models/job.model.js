@@ -19,6 +19,10 @@ const jobSchema = mongoose.Schema({
     jobDetails: {
         type: Object,
         required: false
+    },
+    purchaseOrders: {
+        type: Array,
+        required: false
     }
 });
 

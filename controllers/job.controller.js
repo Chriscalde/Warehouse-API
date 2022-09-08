@@ -37,6 +37,20 @@ exports.changeStatus = async(req, res) => {
         }
     })
 }
+exports.addPurchaseOrder = async(req, res) => {
+    const jobId = req.params.id
+    const purchaseOrders = req.params.purchaseOrders
+    Job.findByIdAndUpdate(jobId, { purchaseOrders: purchaseOrders }, (err, job) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).json({
+                success: true,
+                data: job
+            })
+        }
+    })
+}
 exports.addJobDetails = async(req, res) => {
     const jobId = req.params.id
     const jobDetails = req.body.jobDetails

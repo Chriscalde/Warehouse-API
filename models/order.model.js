@@ -20,6 +20,10 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    purchaseOrder: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: false

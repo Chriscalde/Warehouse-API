@@ -15,6 +15,7 @@ exports.createItem = async(req, res) => {
         type,
         code,
         item,
+        purchaseOrder,
         location,
         description,
         date,
