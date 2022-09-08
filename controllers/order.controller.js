@@ -5,6 +5,7 @@ exports.createItem = async(req, res) => {
     const type = req.body.type
     const code = req.body.code
     const item = req.body.item
+    const purchaseOrder = req.body.purchaseOrder
     const location = req.body.location
     const description = req.body.description
     const date = req.body.date
