@@ -39,7 +39,7 @@ exports.changeStatus = async(req, res) => {
 }
 exports.addPurchaseOrder = async(req, res) => {
     const jobId = req.params.id
-    const purchaseOrders = req.params.purchaseOrders
+    const purchaseOrders = req.body.purchaseOrders
     Job.findByIdAndUpdate(jobId, { purchaseOrders: purchaseOrders }, (err, job) => {
         if (err) {
             res.status(500).send(err)
