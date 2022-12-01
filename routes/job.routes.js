@@ -9,5 +9,5 @@ router.put('/orders/:id', controller.addPurchaseOrder);
 router.get('/all', controller.getAll);
 router.get('/get/:id', controller.getJob);
 router.get('/first', controller.getFirstJob);
-
+router.post('/create/template',controller.createJobTemplate);
 module.exports = router;

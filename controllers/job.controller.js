@@ -105,3 +105,30 @@ exports.getFirstJob = (req, res) => {
         }
     })
 }
+
+exports.createJobTemplate = (req,res) => {
+    const jobNumber = req.body.jobNumber
+    const client = req.body.client
+    const status = req.body.status
+    const jobDetails = req.body.jobDetails
+    const purchaseOrders = req.body.purchaseOrders
+
+    const newJob = new Job({
+        jobNumber,
+        client,
+        status,
+        jobDetails,
+        purchaseOrders
+    });
+
+    newJob.save(async(err,job)=>{
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(200).json({
+                success: true,
+                data: job
+            })
+        }
+    })
+}

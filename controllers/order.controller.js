@@ -125,3 +125,19 @@ exports.readTemplate = (req,res) => {
         }
     })
 }
+
+exports.updateStatus = (req,res) => {
+    item = req.body.item
+    itemStatus = req.body.status
+
+    Order.findOneAndUpdate({item},{status:itemStatus},(err,savedI)=>{
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(200).json({
+                success: true,
+                data: savedI
+            })
+        }
+    })
+}
